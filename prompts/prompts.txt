@@ -1,0 +1,190 @@
+﻿Prompts used in our experiments
+
+
+
+
+Base Code Generation
+
+
+I want you to act as a software developer. You will be provided with a summarized description of a source code file. Write the source code ensuring that it covers all the necessary aspects, including the actions it should take, dependencies, UI components, and any other factors influencing the application's execution.
+
+
+Summary: {summary}
+
+
+
+
+Zero-Shot
+
+
+I want you to act as a software developer. You will be provided with a summarized description of a source code file. Write the source code ensuring that it covers all the necessary aspects, including the actions it should take, dependencies, UI components, and any other factors influencing the application's execution. 
+In addition, act as a WCAG accessibility expert and make sure the code you generate complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. 
+
+
+Summary: {summary}
+
+
+
+
+Few-Shot
+
+
+I want you to act as a software developer. You will be provided with a summarized description of a source code file. Write the source code ensuring that it covers all the necessary aspects, including the actions it should take, dependencies, UI components, and any other factors influencing the application's execution. 
+In addition, act as a WCAG accessibility expert and make sure the code you generate complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. You will also receive detailed information about accessibility rules, along with correct and incorrect examples for each rule. Use this information to generate compliant source code.
+
+
+Summary: {summary}
+
+
+*** Repeated for each accessibility rule ***
+Rule: {violations['violation_type']}
+Description: {violations['description']}
+Incorrect Example: {violations['incorrect_example']}
+Correct Example: {violations['example']}
+
+
+
+
+
+
+Self-Critique
+
+
+[Code Generator model]
+I want you to act as a software developer. You will be provided with a summarized description of a source code file. Write the source code ensuring that it covers all the necessary aspects, including the actions it should take, dependencies, UI components, and any other factors influencing the application's execution. In addition, act as a WCAG accessibility expert and make sure the code you generate complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. 
+
+
+Summary: {summary}
+
+
+
+
+[Code Reviewer model]
+I want you to act as a code reviewer and a WCAG accessibility expert. Review the code to check if it meets WCAG accessibility guidelines. If it is fully compliant, return the code unchanged. If there are any accessibility issues, identify and fix them, then return the modified code that fully complies with the guidelines.
+
+
+Code: {code}
+
+
+
+
+Guided Self-Critique
+
+
+[Code Generator model]
+I want you to act as a software developer. You will be provided with a summarized description of a source code file. Write the source code ensuring that it covers all the necessary aspects, including the actions it should take, dependencies, UI components, and any other factors influencing the application's execution. In addition, act as a WCAG accessibility expert and make sure the code you generate complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. 
+
+
+Summary: {summary}
+
+
+*** Repeated for each accessibility rule ***
+Rule: {accessibility rule name}
+Description: {description}
+Solution: {solution}
+
+
+
+
+[Code Reviewer model]
+I want you to act as a code reviewer and a WCAG accessibility expert. Review the code to check if it meets WCAG accessibility guidelines. If it is fully compliant, return the code unchanged. If there are any accessibility issues, identify and fix them, then return the modified code that fully complies with the guidelines.
+
+
+Code: {code}
+
+
+*** Repeated for each accessibility rule ***
+Rule: {accessibility rule name}
+Description: {description}
+Solution: {solution}
+
+
+
+
+MAD
+
+
+[Initial - Code Generator model]
+I want you to act as a software developer. You will be provided with a summarized description of a source code file. Write the source code ensuring that it covers all the necessary aspects, including the actions it should take, dependencies, UI components, and any other factors influencing the application's execution. In addition, act as a WCAG accessibility expert and make sure the code you generate complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. 
+
+
+Summary: {summary}
+
+
+
+
+[Initial - Code Reviewer model]
+I want you to act as a code reviewer and a WCAG accessibility expert. You will be provided with a source code. Review the code to make sure the code complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. 
+Provide suggestions for improvement in making the code more accessible. 
+
+
+Code: {code}
+
+
+[Discussion - Code Generator model]
+I want you to act as a software developer. The other agent returned suggestions for improving accessibility of the code as {review}. Based on the suggestions, act as a WCAG accessibility expert and improve the code so that it meets the accessibility guidelines. Return only the entire improved source code in the output.
+
+
+
+
+
+
+[Discussion - Code Reviewer model]
+I want you to act as a code reviewer and a WCAG accessibility expert. The other agent returned the code as {code}. Based on the code, determine if it meets with the WCAG accessibility guidelines. If not, provide suggestions that can help code meet the WCAG accessibility guidelines.
+
+
+
+
+
+
+
+
+
+Guided MAD
+
+
+[Initial - Code Generator model]
+I want you to act as a software developer. You will be provided with a summarized description of a source code file. Write the source code ensuring that it covers all the necessary aspects, including the actions it should take, dependencies, UI components, and any other factors influencing the application's execution. In addition, act as a WCAG accessibility expert and make sure the code you generate complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. 
+
+
+*** Repeated for each accessibility rule ***
+Rule: {accessibility rule name}
+Description: {description}
+Solution: {solution}
+
+
+
+
+[Initial - Code Reviewer model]
+I want you to act as a code reviewer and a WCAG accessibility expert. You will be provided with a source code. Review the code to make sure the code complies with the WCAG accessibility rules. The code should be designed to avoid any violations of these rules, ensuring that it meets all accessibility requirements. 
+Provide suggestions for improvement in making the code more accessible. 
+
+
+*** Repeated for each accessibility rule ***
+Rule: {accessibility rule name}
+Description: {description}
+Solution: {solution}
+
+
+
+
+[Discussion - Code Generator model]
+I want you to act as a software developer. The other agent returned suggestions for improving accessibility of the code as {review}. Based on the suggestions, act as a WCAG accessibility expert and improve the code so that it meets the accessibility guidelines. Return only the entire improved source code in the output.
+
+
+*** Repeated for each accessibility rule ***
+Rule: {accessibility rule name}
+Description: {description}
+Solution: {solution}
+
+
+
+
+[Discussion - Code Reviewer model]
+I want you to act as a code reviewer and a WCAG accessibility expert. The other agent returned the code as {code}. Based on the code, determine if it meets with the WCAG accessibility guidelines. If not, provide suggestions that can help code meet the WCAG accessibility guidelines.
+
+
+*** Repeated for each accessibility rule ***
+Rule: {accessibility rule name}
+Description: {description}
+Solution: {solution}
