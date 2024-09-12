@@ -38,16 +38,46 @@ def is_ui_related(file_path):
     }
 
     # Define patterns and keywords for UI-related content
-    html_patterns = [
-        '<html', '<head', '<body', '<header', '<footer', '<nav', '<main', 
-        '<section', '<article', '<aside', '<div', '<span', '<button', 
-        '<input', '<form', '<a', '<h1', '<p', '<img', '<video', '<audio', 
-        'class=', 'id=', 'style=', 'data-'
+html_patterns = [
+        "<html", "<head", "<title", "<body", "<meta", "<link", "<style", "<script", "<header", "<nav",
+        "<section", "<article", "<aside", "<footer", "<h1", "<h2", "<h3", "<h4", "<h5", "<h6", "<p",
+        "<blockquote", "<hr", "<pre", "<br", "<code", "<em", "<strong", "<a", "<span", "<b", "<i",
+        "<u", "<mark", "<small", "<sup", "<sub", "<del", "<ins", "<ul", "<ol", "<li", "<dl", "<dt",
+        "<dd", "<table", "<thead", "<tbody", "<tfoot", "<tr", "<th", "<td", "<caption", "<form", "<input",
+        "<textarea", "<button", "<select", "<option", "<label", "<fieldset", "<legend", "<datalist", "<output",
+        "<img", "<figure", "<figcaption", "<video", "<audio", "<source", "<track", "<iframe", "<object",
+        "<embed", "<canvas", "<svg", "<details", "<summary", "<dialog", "<template", "<slot", "<shadow",
+        "<main", "<article", "<section", "<aside", "<time", "<progress", "<meter", "<font", "<center"
     ]
-    css_patterns = [
-        'color:', 'background:', 'border:', 'font:', 'padding:', 'margin:', 
-        'display:', 'position:', 'flex:', 'grid:', '@media', '@import'
+
+css_patterns = [
+        "display:", "position:", "top:", "right:", "bottom:", "left:", "float:", "clear:", "z-index:", 
+        "overflow:", "overflow-x:", "overflow-y:", "visibility:", "width:", "min-width:", "max-width:", 
+        "height:", "min-height:", "max-height:", "margin:", "margin-top:", "margin-right:", 
+        "margin-bottom:", "margin-left:", "padding:", "padding-top:", "padding-right:", 
+        "padding-bottom:", "padding-left:", "border:", "border-width:", "border-style:", 
+        "border-color:", "border-radius:", "box-shadow:", "box-sizing:", "background:", 
+        "background-color:", "background-image:", "background-position:", "background-size:", 
+        "background-repeat:", "background-attachment:", "background-clip:", "outline:", 
+        "outline-color:", "outline-style:", "outline-width:", "font:", "font-family:", 
+        "font-size:", "font-weight:", "font-style:", "font-variant:", "font-stretch:", "color:", 
+        "text-align:", "text-decoration:", "text-decoration-color:", "text-decoration-style:", 
+        "line-height:", "letter-spacing:", "word-spacing:", "text-transform:", "white-space:", 
+        "text-shadow:", "text-overflow:", "flex:", "flex-grow:", "flex-shrink:", "flex-basis:", 
+        "flex-direction:", "flex-wrap:", "justify-content:", "align-items:", "align-self:", 
+        "align-content:", "order:", "grid:", "grid-template-columns:", "grid-template-rows:", 
+        "grid-template-areas:", "grid-column:", "grid-row:", "grid-area:", "grid-gap:", 
+        "grid-column-gap:", "grid-row-gap:", "vertical-align:", "align-content:", "justify-items:", 
+        "justify-self:", "animation:", "animation-name:", "animation-duration:", 
+        "animation-timing-function:", "animation-delay:", "animation-iteration-count:", 
+        "animation-direction:", "transition:", "transition-property:", "transition-duration:", 
+        "transition-timing-function:", "transition-delay:", "transform:", "transform-origin:", 
+        "perspective:", "perspective-origin:", "opacity:", "cursor:", "filter:", "border-collapse:", 
+        "border-spacing:", "caption-side:", "empty-cells:", "table-layout:", "list-style:", 
+        "list-style-type:", "list-style-position:", "list-style-image:", ":hover:", ":focus:", 
+        ":active:", ":visited:", ":first-child:", ":nth-child:", ":last-child:", "::before:", "::after:"
     ]
+
     js_patterns = [
         'document.querySelector', 'document.getElementById', 'addEventListener', 
         'innerHTML', 'style.', 'classList.', 'import React', 'ReactDOM.render', 
