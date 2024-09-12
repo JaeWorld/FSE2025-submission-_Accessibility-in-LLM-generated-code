@@ -2,7 +2,7 @@
 
 This repository contains the replication package for the paper "Human or LLM? A Comparative Study on Accessible Code Generation", which was submitted to FSE 2025.
 
-We provide **prompts**, **code**, **results sheet**, and **indicators for UI-related files** for solid presentation.
+We provide **prompts**, **code**, **results sheet**, and **indicators for UI-related files**.
 
 
 ## Prompts
