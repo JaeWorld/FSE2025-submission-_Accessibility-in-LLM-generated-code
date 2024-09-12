@@ -54,11 +54,9 @@ prompt = prompt_construction()
 
 
 for key, values in file_path_dict.items():
-    if key not in todo_list:
-        continue
     print(f"> Executing {key}")
     # Search for the summary file
-    summary_files = [x for x in os.listdir('') if x.startswith(key+'_chatgpt')]
+    summary_files = [x for x in os.listdir('') if x.startswith(key+'')]
     
     if not summary_files:
         print(f"No summary file found for key: {key}")
@@ -87,7 +85,8 @@ for key, values in file_path_dict.items():
                 messages=[
                     {"role": "system", "content": prompt},
                     {"role": "user", "content": f"Summary: {summary_from_code}"}
-                ]
+                ],
+                temperature=1
             )
 
             code_from_code = response_from_code.choices[0].message.content

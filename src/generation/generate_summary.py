@@ -173,7 +173,8 @@ def summarize_file_content(file_path):
                         messages=[
                             {"role": "user", "content": PROMPT_FROM_CODE},
                             {"role": "user", "content": f"Code: {code}"}
-                        ]
+                        ],
+                        temperature=1
                     )
     summary = response_from_code.choices[0].message.content
     return summary, code

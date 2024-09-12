@@ -12,7 +12,6 @@ import json
 # Set API key
 os.environ['OPENAI_API_KEY'] = ''  # Replace with your actual API key
 
-
 model_dict = {'openai': 'gpt-4-turbo', 'lm-studio': "TechxGenus/Meta-Llama-3-70B-Instruct-AWQ"}
 model_type = 'openai'
 model_name = 'gpt4'
@@ -96,8 +95,6 @@ def debate_prediction(code_summary, max_iteration):
 file_path_dict = pickle.load(open('', 'rb'))
 
 for key, values in file_path_dict.items():
-    if key in done_list:
-        continue
     print(f"> Executing {key}")
 
     summary_files = [x for x in os.listdir('') if x.startswith(key + '_chatgpt')]

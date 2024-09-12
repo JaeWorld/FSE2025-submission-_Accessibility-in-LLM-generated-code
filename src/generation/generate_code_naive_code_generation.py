@@ -129,8 +129,6 @@ def is_ui_related(file_path):
 file_path_dict = pickle.load(open('', 'rb'))
 
 for key, values in file_path_dict.items():
-    if key not in todo_list:
-        continue
     print(f"> Executing {key}")
     
     # Search for the summary file
@@ -161,7 +159,8 @@ for key, values in file_path_dict.items():
                     messages=[
                         {"role": "system", "content": PROMPT_FROM_SUMMARY},
                         {"role": "user", "content": f"Summary: {summary_from_code}"}
-                    ]
+                    ],
+                    temperature=1
                 )
         code_from_code = response_from_code.choices[0].message.content
         new_row = filtered_df.iloc[0].tolist() + [code_from_code]

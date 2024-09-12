@@ -31,12 +31,9 @@ elif model_type == 'lm-studio':
 
 
 file_path_dict = pickle.load(open('', 'rb'))
-prompt = prompt_construction()
 
 
 for key, values in file_path_dict.items():
-    if key not in todo_list:
-        continue
     print(f"> Executing {key}")
     # Search for the summary file
     summary_files = [x for x in os.listdir('') if x.startswith(key+'_chatgpt')]
@@ -66,7 +63,7 @@ for key, values in file_path_dict.items():
             response_from_code = client.chat.completions.create(
                 model=model_dict[model_type],
                 messages=[
-                    {"role": "system", "content": prompt},
+                    {"role": "system", "content": PROMPT_FROM_SUMMARY},
                     {"role": "user", "content": f"Summary: {summary_from_code}"}
                 ]
             )
